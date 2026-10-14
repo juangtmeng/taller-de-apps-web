@@ -39,20 +39,24 @@ Todos los botones "Escribime por WhatsApp" arman solos el link `wa.me` con un me
 |---|---|
 | Textos de una página | El `.html` correspondiente. Los textos están en el orden en que se leen. |
 | Colores, tipografías, tamaños | `assets/styles.css`, bloque `:root` al principio. |
-| Logo | Provisorio: `assets/favicon.svg` y `assets/apple-touch-icon.png` (ver "Logo (provisorio)"). |
+| Logo | El ícono está como SVG en el encabezado y el pie de cada página; los íconos del navegador y del celular en `assets/` (ver "Marca"). |
 | Mensaje de WhatsApp de un botón | Atributo `data-wa="…"` de ese botón. |
 | Imágenes para compartir por WhatsApp | `assets/img/mockup-*.png` (los dos celulares de cada rubro) y `assets/img/og-*.png` (la vista previa del link de cada página). Se regeneran con `render-mockups.py` (herramienta aparte, no hace falta subirla). |
 | Años de experiencia, zona, teléfono | Buscá "Más de 10 años", "Unquillo" y "850 8990" en los `.html`. |
 
-## Logo (provisorio)
+## Marca
 
-Mientras se define el logo con Claude Design, la web usa solo el nombre escrito ("Taller de Apps" en Barlow Condensed, arriba a la izquierda) y una **T** blanca sobre fondo tinta en la pestaña (`assets/favicon.svg`) y en el iPhone (`assets/apple-touch-icon.png`).
+Todo sigue el **Manual de marca v1** de Taller de Apps (hecho con Claude Design, 2026-10-14).
 
-Cuando llegue el logo definitivo: se reemplazan esos dos archivos, se agrega el ícono al lado del nombre en el encabezado de las 4 páginas y, si trae paleta nueva, se cambian los colores del bloque `:root` de `styles.css`.
+- **Ícono:** la regla (un celular de costado que también es una regla). En el encabezado va como SVG dentro del HTML, en verde, y hereda el color; en el pie va en crema sobre tinta. En celular, el encabezado muestra solo el ícono.
+- **Nombre:** siempre "Taller de Apps", en Archivo 800 con interletrado −2,5 %.
+- **Colores** (bloque `:root` de `styles.css`): crema `#F3EDE2` (fondo), tinta `#1E1B18` (texto y fondos oscuros), verde sierra `#1F6B4A` (botones, enlaces, ícono) y cobre `#C2653A` (subrayados y numeración; nunca en botones ni en texto chico). Tonos de apoyo: `#4A453E`, `#6B655C`, `#DDD6CA`, `#175338`.
+- **Íconos del sitio:** `assets/favicon.svg` (versión de 3 marcas), `favicon-32.png`, `favicon-16.png`, `apple-touch-icon.png` (fondo verde, sin redondear), `android-chrome-192.png` e `icono-512.png` (para `site.webmanifest`).
+- Las demás piezas (logo horizontal y apilado, foto de perfil de WhatsApp, imagen para compartir) están en el kit de Claude Design.
 
 ## Tipografías
 
-Barlow, Barlow Condensed e IBM Plex Mono se sirven desde `assets/fonts/` (licencia Open Font License, incluida). No hay pedidos a Google Fonts ni a ningún tercero: el sitio no envía datos de los visitantes a nadie.
+Una sola: **Archivo** (pesos 400, 500, 600 y 800), servida desde `assets/fonts/` con su licencia Open Font License. Títulos 800, subtítulos 600, texto 400, etiquetas 500 en mayúsculas. No hay pedidos a Google Fonts ni a ningún tercero: el sitio no envía datos de los visitantes a nadie.
 
 ## Lo que no tiene a propósito
 

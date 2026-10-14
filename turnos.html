@@ -16,8 +16,11 @@
   <meta property="og:locale" content="es_AR">
   <link rel="canonical" href="https://taller-de-apps.vercel.app/turnos">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <meta name="theme-color" content="#F4F5F2">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#1F6B4A">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -25,8 +28,8 @@
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Taller de Apps, inicio">
-      <span class="brand-name">Taller <small>de</small> Apps</span>
-      <span class="brand-tag">WebApps a medida</span>
+      <svg class="brand-icon" viewBox="4.5 27.5 91 45" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="8" y="31" width="84" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="7"/><rect x="21" y="31" width="5" height="16"/><rect x="33" y="31" width="5" height="9"/><rect x="45" y="31" width="5" height="16"/><rect x="57" y="31" width="5" height="9"/><rect x="69" y="31" width="5" height="16"/></g></svg>
+      <span class="brand-name">Taller de Apps</span>
     </a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" aria-label="Principal">
@@ -223,8 +226,12 @@
 
 <footer>
   <div class="wrap">
-    <span>Taller de Apps · Juan Pablo Moreno · Unquillo, Córdoba, Argentina</span>
-    <span class="footer-links"><a href="index.html">Inicio</a> · <a href="talleres.html">Talleres</a> · <a href="servicios-tecnicos.html">Servicios técnicos</a> · <a href="corralones.html">Corralones y reparto</a> · <a href="comida.html">Locales de comida</a> · <a href="profesionales.html">Estudios y empresas</a> · <a href="transporte.html">Transporte</a> · <a href="organizaciones.html">Organizaciones</a></span>
+    <div class="footer-brand">
+      <a class="brand footer-logo" href="index.html" aria-label="Taller de Apps, inicio"><svg class="brand-icon" viewBox="4.5 27.5 91 45" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="8" y="31" width="84" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="7"/><rect x="21" y="31" width="5" height="16"/><rect x="33" y="31" width="5" height="9"/><rect x="45" y="31" width="5" height="16"/><rect x="57" y="31" width="5" height="9"/><rect x="69" y="31" width="5" height="16"/></g></svg><span class="brand-name">Taller de Apps</span></a>
+      <p class="footer-lema">Se carga una vez. Lo ves andar antes de pagar.</p>
+      <p class="footer-who">Juan Pablo Moreno · Unquillo, Córdoba, Argentina</p>
+    </div>
+    <nav class="footer-links" aria-label="Rubros"><a href="index.html">Inicio</a><a href="talleres.html">Talleres</a><a href="servicios-tecnicos.html">Servicios técnicos</a><a href="corralones.html">Corralones y reparto</a><a href="comida.html">Locales de comida</a><a href="profesionales.html">Estudios y empresas</a><a href="transporte.html">Transporte</a><a href="organizaciones.html">Organizaciones</a></nav>
   </div>
 </footer>
 
