@@ -81,7 +81,6 @@ mark { background: none; color: inherit; text-decoration: underline; text-decora
   font-family: var(--font-label); font-weight: 500; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
   color: var(--ink-2); display: inline-flex; align-items: center; gap: .6rem;
 }
-.eyebrow::before { content: ""; width: 1.6rem; height: 2px; background: var(--copper); flex: none; }
 
 /* Botones: radio 8, Archivo 800, 15 px, relleno 12 × 20, sin sombra */
 .btn {
@@ -232,6 +231,20 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1.6rem 3rem; justify-content
 .ba td:first-child { color: var(--ink-2); width: 46%; }
 .ba td:last-child { font-weight: 500; }
 .ba-wrap { overflow-x: auto; }
+
+/* Proceso dibujado (BPMN de ejemplo) */
+.proceso { align-items: center; }
+.checks { list-style: none; display: grid; gap: .55rem; margin-top: .3rem; }
+.checks li { position: relative; padding-left: 1.7rem; color: var(--ink-2); }
+.checks li::before { content: ""; position: absolute; left: .15rem; top: .38em; width: 12px; height: 7px; border-left: 2.5px solid var(--green); border-bottom: 2.5px solid var(--green); transform: rotate(-45deg); }
+.bpmn-fig { margin: 0; display: grid; gap: .7rem; width: 100%; max-width: 440px; justify-self: center; }
+.bpmn { width: 100%; height: auto; display: block; }
+.bpmn-fig figcaption { font-size: .9rem; color: var(--ink-2); }
+.bpmn-fig figcaption strong { color: var(--ink); font-weight: 600; }
+.step .bpmn-fig { margin-top: .5rem; max-width: 400px; justify-self: start; }
+.note-medida { font-size: .95rem; color: var(--ink-2); padding: .7rem .95rem; border-left: 3px solid var(--green); background: var(--surface); border-radius: 0 8px 8px 0; max-width: 40em; }
+.facts a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.facts a:hover { color: var(--green); }
 
 /* Lista de dolores en landings: número en un aro de cobre */
 .pains { display: grid; gap: .9rem; }
