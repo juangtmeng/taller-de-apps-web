@@ -32,7 +32,7 @@
     a.href = DEMO_URL;
     a.target = "_blank";
     a.rel = "noopener";
-    // Mientras no esté cargada la URL de la demo, los botones no se muestran.
-    if (DEMO_URL.indexOf("REEMPLAZAR") !== -1) { a.style.display = "none"; }
+    // Los botones vienen ocultos (atributo hidden) y se muestran solo cuando está cargada la URL de la demo.
+    if (DEMO_URL.indexOf("REEMPLAZAR") === -1) { a.hidden = false; }
   });
 })();
