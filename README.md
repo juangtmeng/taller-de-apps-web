@@ -36,7 +36,7 @@ https://taller-de-apps.pages.dev/talleres?para=Taller%20Ruta%2053&nombre=Marcela
 
 Con ese link, `site.js`:
 
-- muestra arriba un saludo ("**Hola, Marcela.** Aquí te comparto info de mi servicio para Taller Ruta 53. Lo que ves aquí es un ejemplo, la App se arma a medida de acuerdo a su propio proceso. Este link me avisa cuando lo abren, así no te escribo de más."). Sin `nombre` dice solo "Hola.";
+- muestra arriba un saludo ("**Hola, Marcela.** Aquí te comparto info de mi servicio para Taller Ruta 53. Lo que ves aquí es un ejemplo, la App se arma a medida de acuerdo a su propio proceso."). Sin `nombre` dice solo "Hola.";
 - cambia el mensaje de todos los botones de WhatsApp a "Hola Juan, soy Marcela, de Taller Ruta 53 (Río Ceballos). Vi la página que me mandaste…", así sabés quién escribe aunque sea desde otro número;
 - mantiene el saludo si la persona pasa a otra página del sitio.
 

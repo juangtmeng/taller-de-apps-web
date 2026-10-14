@@ -73,11 +73,6 @@
     p.appendChild(document.createTextNode(
       " Aquí te comparto info de mi servicio para " + perso.para + "." +
       " Lo que ves aquí es un ejemplo, la App se arma a medida de acuerdo a su propio proceso."));
-    if (registrar && perso.c) {
-      var s = document.createElement("small");
-      s.textContent = " Este link me avisa cuando lo abren, así no te escribo de más.";
-      p.appendChild(s);
-    }
     w.appendChild(p);
     band.appendChild(w);
     var top = document.querySelector(".topbar");
