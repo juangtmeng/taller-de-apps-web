@@ -328,3 +328,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1.6rem 3rem; justify-content
 .cta-band .contact-row .number { color: var(--ink); font-weight: 600; }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Link personalizado: saludo al negocio que recibió el link (lo arma site.js) */
+.para-band { background: var(--green-soft); border-bottom: 1px solid var(--line); }
+.para-band .wrap { padding-top: .7rem; padding-bottom: .7rem; }
+.para-band p { margin: 0; font-size: .95rem; color: var(--ink); max-width: 60em; }
+.para-band strong { font-weight: 800; }
+.para-band small { color: var(--ink-2); font-size: .85rem; }
+.footer-privacy { margin: .9rem 0 0; font-size: .8rem; line-height: 1.5; color: var(--on-dark-2); max-width: 34em; }

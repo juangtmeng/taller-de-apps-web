@@ -1,14 +1,5 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
-    { "source": "/organizaciones", "destination": "/", "permanent": false },
-    { "source": "/organizaciones.html", "destination": "/", "permanent": false }
-  ],
-  "headers": [
-    {
-      "source": "/assets/fonts/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
-    }
+    { "source": "/(.*)", "destination": "https://taller-de-apps.pages.dev/$1", "permanent": false }
   ]
 }

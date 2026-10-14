@@ -1,0 +1,10 @@
+# Redirecciones de Cloudflare Pages (una por línea: origen destino código).
+# La página de organizaciones se sacó por ahora.
+/organizaciones  /  302
+
+# Links cortos para piezas impresas o perfiles (ejemplos; se activan quitando el "#").
+# Cada uno marca de dónde vino la visita con ?origen=, así aparece en Airtable.
+# /qr        /?origen=qr          302
+# /tarjeta   /?origen=tarjeta     302
+# /maps      /?origen=google-maps 302
+# /ig        /?origen=instagram   302

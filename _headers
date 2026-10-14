@@ -1,0 +1,8 @@
+# Encabezados de Cloudflare Pages.
+# Las tipografías no cambian nunca: se guardan un año. styles.css y site.js usan ?v= y no necesitan más.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
