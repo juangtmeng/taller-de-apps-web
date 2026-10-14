@@ -1,13 +1,20 @@
 # Taller de Apps · sitio web
 
-Sitio estático: HTML, CSS y JS sin dependencias ni build. Cuatro páginas:
+Sitio estático: HTML, CSS y JS sin dependencias ni build. Nueve páginas: el inicio y una por rubro.
 
 | Archivo | Qué es | URL en Vercel |
 |---|---|---|
 | `index.html` | Página principal: qué hacemos, dolores, 4 pasos, para quién, compromisos, preguntas, quién soy, contacto | `/` |
-| `talleres.html` | Landing para talleres mecánicos | `/talleres` |
-| `servicios-tecnicos.html` | Landing para refrigeración, climatización, seguridad electrónica, piscinas | `/servicios-tecnicos` |
-| `corralones.html` | Landing para corralones, ferreterías y distribuidoras con reparto | `/corralones` |
+| `talleres.html` | Talleres mecánicos | `/talleres` |
+| `servicios-tecnicos.html` | Refrigeración, climatización, seguridad electrónica, piscinas | `/servicios-tecnicos` |
+| `corralones.html` | Corralones, ferreterías y distribuidoras con reparto | `/corralones` |
+| `turnos.html` | Negocios con turnos: veterinarias, estética, consultorios, gimnasios | `/turnos` |
+| `comida.html` | Locales de comida que toman pedidos: rotiserías, pizzerías, viandas | `/comida` |
+| `profesionales.html` | Estudios contables y jurídicos, inmobiliarias, arquitectura, empresas de servicios | `/profesionales` |
+| `transporte.html` | Fletes, mudanzas, cargas | `/transporte` |
+| `organizaciones.html` | Cooperativas de servicios, clubes, fundaciones, asociaciones | `/organizaciones` |
+
+Las cinco últimas landings se generan con `make-landings.py` a partir de `landings_data.py` (herramientas aparte). Para cambiar un texto de esas páginas, conviene cambiarlo ahí y volver a generar; si se edita el HTML a mano, el próximo generado lo pisa.
 
 ## Datos en `assets/site.js`
 
@@ -34,7 +41,7 @@ Todos los botones "Escribime por WhatsApp" arman solos el link `wa.me` con un me
 | Colores, tipografías, tamaños | `assets/styles.css`, bloque `:root` al principio. |
 | Logo | Provisorio: `assets/favicon.svg` y `assets/apple-touch-icon.png` (ver "Logo (provisorio)"). |
 | Mensaje de WhatsApp de un botón | Atributo `data-wa="…"` de ese botón. |
-| Imágenes para compartir por WhatsApp | `assets/img/mockup-*.png` (una por nicho) y `assets/img/og-taller-de-apps.png` (la vista previa del link). Se regeneran con `render-mockups.py` (herramienta aparte, no hace falta subirla). |
+| Imágenes para compartir por WhatsApp | `assets/img/mockup-*.png` (los dos celulares de cada rubro) y `assets/img/og-*.png` (la vista previa del link de cada página). Se regeneran con `render-mockups.py` (herramienta aparte, no hace falta subirla). |
 | Años de experiencia, zona, teléfono | Buscá "Más de 10 años", "Unquillo" y "850 8990" en los `.html`. |
 
 ## Logo (provisorio)

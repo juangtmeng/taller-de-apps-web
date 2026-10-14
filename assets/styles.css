@@ -147,7 +147,8 @@ mark { background: linear-gradient(transparent 55%, var(--yellow-soft) 55%); col
 
 /* Nichos */
 .niches { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media (min-width: 700px) { .niches { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 700px) { .niches { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1020px) { .niches { grid-template-columns: repeat(4, minmax(0, 1fr)); } .niche h3 { font-size: 1.35rem; } }
 .niche { display: grid; gap: .7rem; padding: 1.4rem; border-radius: var(--radius); background: var(--white); border: 1px solid var(--line); text-decoration: none; color: var(--ink); min-width: 0; transition: border-color .15s ease, transform .08s ease; }
 .niche:hover { border-color: var(--green); color: var(--ink); transform: translateY(-2px); }
 .niche .who { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
