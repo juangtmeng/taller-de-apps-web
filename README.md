@@ -28,19 +28,19 @@ Todos los botones "Escribime por WhatsApp" arman solos el link `wa.me` con un me
 
 ## Link personalizado para cada negocio
 
-El link que mandás puede llevar el nombre del negocio, su localidad, su id de cuenta en Airtable, la versión del mensaje y el canal por el que lo mandaste:
+El link que mandás puede llevar el nombre del negocio, el nombre de la persona a quien saludás, su localidad, su id de cuenta en Airtable, la versión del mensaje y el canal por el que lo mandaste:
 
 ```
-https://taller-de-apps.pages.dev/talleres?para=Taller%20Ruta%2053&zona=R%C3%ADo%20Ceballos&c=recAbCdEfGhIjKlMn&m=2&origen=instagram
+https://taller-de-apps.pages.dev/talleres?para=Taller%20Ruta%2053&nombre=Marcela&zona=R%C3%ADo%20Ceballos&c=recAbCdEfGhIjKlMn&m=2&origen=instagram
 ```
 
 Con ese link, `site.js`:
 
-- muestra arriba un saludo ("Hola, Taller Ruta 53. Esto es lo que te comentaba. La herramienta de ustedes se arma a medida, sobre cómo trabajan hoy, ahí en Río Ceballos. Este link me avisa cuando lo abren, así no te escribo de más.");
-- cambia el mensaje de todos los botones de WhatsApp a "Hola Juan, soy de Taller Ruta 53 (Río Ceballos). Vi la página que me mandaste…", así sabés quién escribe aunque sea desde otro número;
+- muestra arriba un saludo ("**Hola, Marcela.** Aquí te comparto info de mi servicio para Taller Ruta 53. Lo que ves aquí es un ejemplo, la App se arma a medida de acuerdo a su propio proceso. Este link me avisa cuando lo abren, así no te escribo de más."). Sin `nombre` dice solo "Hola.";
+- cambia el mensaje de todos los botones de WhatsApp a "Hola Juan, soy Marcela, de Taller Ruta 53 (Río Ceballos). Vi la página que me mandaste…", así sabés quién escribe aunque sea desde otro número;
 - mantiene el saludo si la persona pasa a otra página del sitio.
 
-Sin `para`, o con un valor raro (más de 80 letras, vacío), la página se ve igual que siempre. Lo que viene en el link se muestra como texto, nunca como código. El link no se puede proteger: cualquiera podría armar uno con otro nombre, pero solo cambia ese saludo.
+Sin `para`, o con un valor raro (más de 80 letras, vacío), la página se ve igual que siempre. Si `nombre` trae algo que no sea un nombre (números, signos), saluda sin nombre. El nombre de la persona solo se muestra en pantalla: no se manda a Airtable. Lo que viene en el link se muestra como texto, nunca como código. El link no se puede proteger: cualquiera podría armar uno con otro nombre, pero solo cambia ese saludo.
 
 Los links se arman solos en Airtable con el campo "Link para mandar" de cada cuenta (ver `claude/web/cloudflare-y-visitas.md` en el proyecto).
 
@@ -63,6 +63,17 @@ Límite: el plan gratis de Airtable da 1.000 llamadas por mes. Cada página vist
 
 **Links cortos para impresos:** en `_redirects` hay ejemplos (`/qr`, `/tarjeta`, `/maps`, `/ig`) que llevan a la página con `?origen=` marcado. Se activan quitando el `#`.
 
+## Señales de intención (qué miró cada visita)
+
+Además de páginas, proceso y WhatsApp, cada visita anota:
+
+- **Secciones vistas:** las que quedaron al menos 1,2 segundos en el centro de la pantalla (pasar de largo no cuenta). Ejemplo: "Talleres mecánicos › Proceso dibujado", "Inicio › Cómo cobro".
+- **Preguntas abiertas:** las preguntas frecuentes que desplegó.
+- **Miró precios:** vio la sección **Cómo cobro** (inicio, `#cobro`), abrió "¿Cuánto sale?" o tocó "¿Cuánto saldría para mi negocio?".
+- **Pidió precio:** tocó el botón "¿Cuánto saldría para mi negocio?" (`data-precio`), que abre WhatsApp con ese pedido.
+
+En el CRM, cuatro automatizaciones convierten esto en señales con puntos (una vez por cuenta): miró precios +8, volvió o compartió +6, tocó WhatsApp +4, abrió y vio el proceso +3. Detalle en `claude/agentes/senales-e-intencion.md` del proyecto.
+
 ## Publicar en Cloudflare Pages
 
 El sitio vive en Cloudflare Pages (plan gratis, permitido para uso comercial), conectado al mismo repo de GitHub. Cada vez que subís archivos al repo, Cloudflare publica solo.
@@ -75,7 +86,7 @@ Archivos propios de Cloudflare: `_redirects` (redirecciones y links cortos), `_h
 
 `vercel.json` ahora solo manda todo de Vercel a Cloudflare, para que los links viejos sigan andando. Cuando ya nadie use la dirección vieja, el proyecto de Vercel se puede borrar.
 
-`styles.css` y `site.js` se piden con un número de versión (`styles.css?v=20261014g`): **si los cambiás, subí ese número en las 8 páginas** (o en `brand.py` si usás el generador), así los navegadores no siguen mostrando la copia vieja.
+`styles.css` y `site.js` se piden con un número de versión (`styles.css?v=20261014h`): **si los cambiás, subí ese número en las 8 páginas** (o en `brand.py` si usás el generador), así los navegadores no siguen mostrando la copia vieja.
 
 ## Dónde se cambia cada cosa
 

@@ -109,13 +109,17 @@ mark { background: none; color: inherit; text-decoration: underline; text-decora
 .nav .btn:hover { color: var(--white); }
 .nav-toggle { display: none; background: none; border: 2px solid var(--ink); border-radius: 8px; width: 42px; height: 38px; cursor: pointer; }
 .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--ink); margin: 3px auto; }
-@media (max-width: 760px) {
-  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .brand-icon { width: 48px; height: 24px; }
+.nav a { white-space: nowrap; }
+/* El menú se pliega antes de que los links tengan que partirse en dos líneas */
+@media (max-width: 1080px) {
   .nav-toggle { display: inline-block; }
   .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--paper); border-bottom: 1px solid var(--line); padding: 1rem 20px 1.3rem; flex-direction: column; align-items: flex-start; gap: .9rem; }
   .nav[data-open="true"] { display: flex; }
   .nav .btn { padding: 12px 20px; }
+}
+@media (max-width: 760px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .brand-icon { width: 48px; height: 24px; }
 }
 
 /* Portada */
@@ -336,3 +340,14 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1.6rem 3rem; justify-content
 .para-band strong { font-weight: 800; }
 .para-band small { color: var(--ink-2); font-size: .85rem; }
 .footer-privacy { margin: .9rem 0 0; font-size: .8rem; line-height: 1.5; color: var(--on-dark-2); max-width: 34em; }
+
+/* Cómo cobro (inicio) */
+.cobro-grid { display: grid; gap: 1rem; margin-top: 1.6rem; }
+@media (min-width: 900px) { .cobro-grid { grid-template-columns: repeat(3, 1fr); } }
+.cobro-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.3rem 1.1rem; min-width: 0; }
+.cobro-card h3 { margin: .7rem 0 .6rem; }
+.cobro-card .checks { margin: 0; }
+.cobro-card .checks li { font-size: .97rem; }
+.cobro-tag { display: inline-block; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--green-ink); background: var(--green-soft); border-radius: 999px; padding: .25rem .7rem; }
+.cobro-close { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center; justify-content: space-between; padding: 1.2rem 1.3rem; border-radius: var(--radius); background: var(--paper-2); }
+.cobro-close p { margin: 0; max-width: 34em; color: var(--ink); }

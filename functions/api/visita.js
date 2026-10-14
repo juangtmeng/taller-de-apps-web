@@ -22,6 +22,12 @@ const PAGINAS = {
   "/transporte": "Transporte",
 };
 
+const SECCIONES = {
+  hoy: "Lo que pasa hoy", herramienta: "La herramienta", proceso: "Proceso dibujado", preguntas: "Preguntas",
+  contacto: "Contacto", dolores: "Lo que cuesta hoy", como: "Cómo trabajamos", cobro: "Cómo cobro",
+  rubros: "Para quién", compromisos: "Compromisos", quien: "Quién soy",
+};
+
 const ORIGENES = ["Link personalizado", "Google", "Instagram", "Facebook", "LinkedIn", "WhatsApp", "QR / impreso", "Directo", "Otro"];
 
 // Robots y vistas previas de links (no corren JavaScript, pero por las dudas)
@@ -51,7 +57,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   let d;
   try {
     const crudo = await request.text();
-    if (crudo.length > 4000) return NADA();
+    if (crudo.length > 8000) return NADA();
     d = JSON.parse(crudo);
   } catch { return NADA(); }
 
@@ -67,6 +73,23 @@ export async function onRequestPost({ request, env, waitUntil }) {
   }
   if (!paginas.length) return NADA();
 
+  // Secciones que estuvieron a la vista ("/talleres#proceso" → "Talleres mecánicos › Proceso dibujado")
+  const secciones = [];
+  for (const sv of (Array.isArray(d.secciones) ? d.secciones : []).slice(0, 40)) {
+    if (typeof sv !== "string" || sv.indexOf("#") < 0) continue;
+    const [ruta, id] = sv.split("#");
+    const nombre = pagina(ruta), sec = SECCIONES[id];
+    if (nombre && sec) { const t = `${nombre} › ${sec}`; if (!secciones.includes(t)) secciones.push(t); }
+  }
+  // Preguntas frecuentes que abrió (texto de la pregunta, limpio y corto)
+  const preguntas = [];
+  for (const q of (Array.isArray(d.preguntas) ? d.preguntas : []).slice(0, 15)) {
+    const t = texto(q, 80);
+    if (t && !preguntas.includes(t)) preguntas.push(t);
+  }
+  const miroPrecios = d.precios === true || d.pidioPrecio === true || secciones.some((t) => t.endsWith("Cómo cobro"));
+  const pidioPrecio = d.pidioPrecio === true;
+
   const cf = request.cf || {};
   const localidad = [cf.city, cf.region].filter(Boolean).join(", ") + (cf.country && cf.country !== "AR" ? ` (${cf.country})` : "");
   const dispositivo = /iPad|Tablet/i.test(ua) ? "Tablet" : /Mobi|Android|iPhone/i.test(ua) ? "Celular" : "Computadora";
@@ -74,7 +97,8 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const para = texto(d.para, 80);
   const segundos = Math.min(Math.max(parseInt(d.segundos, 10) || 0, 0), 86400);
 
-  const resumen = [para || "Visita", paginas.join(" → "), d.proceso ? "vio el proceso" : "", d.whatsapp ? "tocó WhatsApp" : ""]
+  const resumen = [para || "Visita", paginas.join(" → "), d.proceso ? "vio el proceso" : "",
+    pidioPrecio ? "pidió precio" : (miroPrecios ? "miró precios" : ""), d.whatsapp ? "tocó WhatsApp" : ""]
     .filter(Boolean).join(" · ").slice(0, 250);
 
   const fields = {
@@ -87,6 +111,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
     "Páginas vistas": paginas.join(" → "),
     "Vio el proceso": d.proceso === true,
     "Tocó WhatsApp": d.whatsapp === true,
+    "Miró precios": miroPrecios,
+    "Pidió precio": pidioPrecio,
+    "Secciones vistas": secciones.join("\n"),
+    "Preguntas abiertas": preguntas.join("\n"),
     "Dispositivo": dispositivo,
     "Localidad aproximada": localidad,
     "Segundos": segundos,
